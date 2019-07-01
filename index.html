@@ -1,0 +1,18 @@
+<h1>File Served</h1>
+<button onclick="myFunction()">Click me</button>
+<a id ="filename" href="http://www.yahoo.com"></a>
+<script>
+var myFunction = () => {
+    console.log("function called");
+    var url = 'http://localhost:3000/GetPDF'
+    fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+        console.log(blob);
+        objectURL = URL.createObjectURL(blob);
+        console.log(objectURL);
+        document.getElementById('filename').href = objectURL;
+        document.getElementById('filename').innerHTML = 'Open me';
+    });
+};
+</script>
